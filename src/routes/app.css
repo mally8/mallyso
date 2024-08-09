@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--bg: hsl(246, 11%, 18%);
+	--fg: hsl(0, 0%, 80%);
+	--roboto: 'Roboto Condensed', sans-serif;
+	--source-code: 'Source Code Pro', monospace;
+}
+
+body {
+	background-color: transparent;
+}

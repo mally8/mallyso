@@ -4,12 +4,12 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				primaryBg: 'rgba(172, 221, 249, 0.1)',
-				primaryBg3: 'rgba(172, 221, 249, 0.3)',
-				primaryBg5: '#acddf980',
-				primaryBg9: '#aedef9e6',
-				primary: 'rgb(172, 221, 249)',
-				dark: 'rgba(50, 50, 50, 0.8)'
+				sGreen5: '',
+				sGreen7: '',
+				sGreen9: '',
+				sGreenPrimary: 'rgba(226, 239, 210, 1)',
+				sGreenDark: 'rgb(63, 80, 69)',
+				sGreenDark9: 'rgba(63, 80, 69, 0.9)'
 			},
 			fontFamily: {
 				sourceCode: 'var(--source-code)',

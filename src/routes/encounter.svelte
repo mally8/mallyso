@@ -17,12 +17,12 @@
 	<span class="h-[1px]"></span>
 
 	<div class="flex flex-col pb-1">
-		{#each players as player, index}
+		{#each players as player}
 			<div
 				class="flex flex-row items-center justify-between bg-sGreenDark9 px-1 text-sGreenPrimary"
 			>
 				<p class="w-[15ch] grow flex-nowrap overflow-x-hidden text-nowrap">
-					{`${player.job.toUpperCase()} - ${player.name}`}
+					{`${player.job.toUpperCase()} ${player.name}`}
 				</p>
 				<span class="shrink-0 ps-1 text-xs">{`${player.dps}[${player.critHitPct}]`}</span>
 			</div>

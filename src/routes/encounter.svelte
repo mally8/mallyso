@@ -1,8 +1,10 @@
 <script>
 	import { getOverlayData } from '../lib/encounter.svelte';
+	import { getWidthPercentage } from '../lib/utils';
 
 	let overlayData = getOverlayData();
 	let players = $derived(overlayData.combatants);
+	let topDamage = $derived(overlayData.combatants[0].damage);
 </script>
 
 <div class="bg-primarybg flex w-full flex-col text-sm">
@@ -24,7 +26,10 @@
 				</p>
 				<span class="shrink-0 ps-1 text-xs">{`${player.dps}[${player.critHitPct}]`}</span>
 			</div>
-			<span class="h-[1px] w-3/5 bg-sGreenPrimary"></span>
+			<span
+				class="h-[1px] bg-sGreenPrimary"
+				style={`width: ${getWidthPercentage(player.damage, topDamage)}%;`}
+			></span>
 		{/each}
 	</div>
 </div>

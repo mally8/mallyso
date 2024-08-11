@@ -31,8 +31,14 @@ function processNumber(number) {
 	return formattedNumber;
 }
 
-function shouldAbbreviate(number) {
-	return number >= 1000;
-}
+export function getWidthPercentage(number, topNumber) {
+	let result;
 
-function abbreviateNumber(number) {}
+	if (number === topNumber) {
+		result = 100;
+	} else {
+		result = (+number / +topNumber) * 100;
+	}
+
+	return result.toFixed(2);
+}

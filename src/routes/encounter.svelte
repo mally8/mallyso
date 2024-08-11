@@ -7,7 +7,7 @@
 
 <div class="bg-primarybg flex w-full flex-col text-sm">
 	<div
-		class="bg-sGreenPrimary text-sGreenDark flex flex-row items-center justify-between px-1 font-semibold"
+		class="flex flex-row items-center justify-between bg-sGreenPrimary px-1 font-semibold text-sGreenDark"
 	>
 		<h1>{overlayData.encounter.zoneName}</h1>
 		<p class="text-xs font-bold">{overlayData.encounter.duration}</p>
@@ -17,14 +17,14 @@
 	<div class="flex flex-col">
 		{#each players as player, index}
 			<div
-				class="bg-sGreenDark9 text-sGreenPrimary flex flex-row items-center justify-between px-1"
+				class="flex flex-row items-center justify-between bg-sGreenDark9 px-1 text-sGreenPrimary"
 			>
 				<p class="w-[15ch] grow flex-nowrap overflow-x-hidden text-nowrap">
 					{`${player.job.toUpperCase()} - ${player.name}`}
 				</p>
 				<span class="shrink-0 ps-1 text-xs">{`${player.dps}[${player.critHitPct}]`}</span>
 			</div>
-			<span class="bg-sGreenPrimary h-[1px] w-3/5"></span>
+			<span class="h-[1px] w-3/5 bg-sGreenPrimary"></span>
 		{/each}
 	</div>
 </div>

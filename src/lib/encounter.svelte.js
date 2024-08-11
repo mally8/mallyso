@@ -21,7 +21,7 @@ class Client {
 	}
 
 	updateEncounter(duration, damage, dps, deaths, zoneName) {
-		this.encounter.duration = parseSeconds(duration);
+		this.encounter.duration = duration;
 		this.encounter.damage = damage;
 		this.encounter.dps = processFloat(dps);
 		this.encounter.deaths = deaths;
@@ -42,7 +42,7 @@ export function parseCombatData(data) {
 	let encounter = data.Encounter;
 
 	overlayData.updateEncounter(
-		encounter.DURATION,
+		encounter.duration,
 		encounter.damage,
 		encounter.dps,
 		encounter.deaths,

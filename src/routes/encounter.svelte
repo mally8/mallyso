@@ -16,7 +16,7 @@
 	</div>
 	<span class="h-[1px]"></span>
 
-	<div class="flex flex-col">
+	<div class="flex flex-col pb-1">
 		{#each players as player, index}
 			<div
 				class="flex flex-row items-center justify-between bg-sGreenDark9 px-1 text-sGreenPrimary"

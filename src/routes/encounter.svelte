@@ -6,13 +6,12 @@
 	let topDamage = $derived(overlayData.combatants[0].damage);
 </script>
 
-<div class="bg-primarybg flex w-full flex-col text-sm">
+<div class="flex w-full flex-col text-sm">
 	<div
-		class="flex flex-row items-center justify-between bg-sGreenPrimary px-1 pt-[1px] font-semibold text-sGreenDark"
+		class="flex flex-row items-center justify-between bg-sGreenDark9 px-1 pt-[1px] font-medium text-sGreenPrimary"
 	>
-		<h2 class="ps-1 text-[12px]">{overlayData.encounter.zoneName}</h2>
-
-		<p class="text-xs font-bold">{overlayData.encounter.duration}</p>
+		<h2>{overlayData.encounter.zoneName}</h2>
+		<p class="text-xs">{overlayData.encounter.duration}</p>
 	</div>
 	<span class="h-[1px]"></span>
 

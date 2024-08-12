@@ -1,9 +1,9 @@
 // TODO: Make the parsing function here and cleanup the file.
 // TODO: Think about Archived Encounters later on once the simple overlay functionality is done.
 
-import { parseSeconds, processFloat } from './utils';
+import { processFloat } from './utils';
 
-class Client {
+class ClientData {
 	encounter = $state({
 		duration: '',
 		damage: '',
@@ -12,6 +12,8 @@ class Client {
 		zoneName: ''
 	});
 	combatants = $state();
+	lastEncounter = $state(false);
+	history = $state([]);
 
 	constructor() {}
 
@@ -31,9 +33,33 @@ class Client {
 	updateCombatants(newCombatants) {
 		this.combatants = newCombatants;
 	}
+
+	isNewEncounter(encounter) {
+		let trueOrFalse =
+			!this.lastEncounter ||
+			this.lastEncounter.region !== encounter.CurrentZoneName ||
+			this.lastEncounter.duration > +encounter.DURATION;
+
+		this.updateLastEncounter(encounter);
+
+		return trueOrFalse;
+	}
+
+	updateLastEncounter(encounter) {
+		this.lastEncounter = {
+			region: encounter.CurrentZoneName,
+			damage: encounter.damage,
+			duration: +encounter.DURATION,
+			formattedDuration: +encounter.duration
+		};
+	}
+
+	historyPush(encounter, combatants) {
+		this.history.push({ id: Date.now(), encounter: encounter, combatants: combatants });
+	}
 }
 
-let overlayData = new Client();
+let overlayData = new ClientData();
 
 export function parseCombatData(data) {
 	if (data.Encounter.DURATION === '0') return;
@@ -59,7 +85,7 @@ export function parseCombatData(data) {
 		let newCombatant = {
 			name: combatant.name,
 			job: combatant.Job,
-			dps: dps.formatted,
+			dps: dps.sanitized,
 			damage: combatant.damage,
 			damagePct: combatant['damage%'],
 			critHitPct: combatant['crithit%'],
@@ -77,9 +103,23 @@ export function parseCombatData(data) {
 	}
 	overlayData.updateCombatants(newCombatants);
 
+	if (overlayData.isNewEncounter(encounter)) {
+		if (+encounter.DURATION > 5) {
+			overlayData.historyPush(encounter, newCombatants);
+		}
+	}
+
 	return overlayData.encounter;
 }
 
 export function getOverlayData() {
-	return overlayData;
+	return { encounter: overlayData.encounter, combatants: overlayData.combatants };
+}
+
+export function getCombatHistory() {
+	return overlayData.history;
+}
+
+export function combatHistoryLogger() {
+	return console.log(overlayData.history);
 }

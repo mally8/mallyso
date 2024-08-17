@@ -4,6 +4,16 @@
 	let settingsBol = $state(false);
 	let currentTheme = $state('pink');
 	let allThemes = $state(['pink', 'orange', 'green']);
+
+	$effect(() => {
+		let storedTheme = localStorage.getItem('theme');
+
+		if (!storedTheme) {
+			localStorage.setItem('theme', 'pink');
+		} else {
+			currentTheme = storedTheme;
+		}
+	});
 </script>
 
 <!-- <h1 class="text-center text-4xl font-bold">Yo! This is the Home page!</h1> -->

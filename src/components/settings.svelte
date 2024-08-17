@@ -3,6 +3,7 @@
 
 	function handleClick(theme) {
 		currentTheme = theme;
+		localStorage.setItem('theme', theme);
 	}
 </script>
 

@@ -3,83 +3,75 @@
 
 import { processFloat } from './utils';
 
-class ClientData {
-	encounter = $state({
+let currentEnc = $state({
+	id: 0,
+	encounter: {
+		formattedDuration: '',
 		duration: '',
 		damage: '',
-		dps: '',
 		deaths: '',
 		zoneName: ''
-	});
-	combatants = $state();
-	lastEncounter = $state(false);
-	history = $state([]);
+	},
+	combatants: []
+});
 
-	constructor() {}
+let temporaryEnc = $state({
+	id: 0,
+	encounter: {
+		formattedDuration: '',
+		duration: '',
+		damage: '',
+		deaths: '',
+		zoneName: ''
+	},
+	combatants: [],
+	isExist: false
+});
 
-	logger() {
-		console.log('Encounter: ', this.encounter);
-		console.log('Combatants: ', this.combatants);
-	}
+let isActive = $state('false');
 
-	updateEncounter(duration, damage, dps, deaths, zoneName) {
-		this.encounter.duration = duration;
-		this.encounter.damage = damage;
-		this.encounter.dps = processFloat(dps);
-		this.encounter.deaths = deaths;
-		this.encounter.zoneName = zoneName;
-	}
+let lastEncounter = $state(false);
 
-	updateCombatants(newCombatants) {
-		this.combatants = newCombatants;
-	}
+let encHistory = $state([]);
 
-	isNewEncounter(encounter) {
-		let trueOrFalse =
-			!this.lastEncounter ||
-			this.lastEncounter.region !== encounter.CurrentZoneName ||
-			this.lastEncounter.duration > +encounter.DURATION;
-
-		this.updateLastEncounter(encounter);
-
-		return trueOrFalse;
-	}
-
-	updateLastEncounter(encounter) {
-		this.lastEncounter = {
-			region: encounter.CurrentZoneName,
-			damage: encounter.damage,
-			duration: +encounter.DURATION,
-			formattedDuration: +encounter.duration
-		};
-	}
-
-	historyPush(encounter, combatants) {
-		this.history.push({ id: Date.now(), encounter: encounter, combatants: combatants });
-	}
+function getEncObject(encounter) {
+	return {
+		formattedDuration: encounter.duration,
+		duration: +encounter.DURATION,
+		damage: encounter.damage,
+		deaths: encounter.deaths,
+		zoneName: encounter.CurrentZoneName
+	};
 }
 
-let overlayData = new ClientData();
+function isNewEncounter(encounter) {
+	let trueOrFalse =
+		!lastEncounter ||
+		lastEncounter.zoneName !== encounter.CurrentZoneName ||
+		lastEncounter.duration > +encounter.DURATION;
+
+	updateLastEncounter(encounter);
+
+	return trueOrFalse;
+}
+
+function updateLastEncounter(encounter) {
+	lastEncounter = getEncObject(encounter);
+	console.log('LAST ENCOUNTER: ', lastEncounter);
+}
 
 export function parseCombatData(data) {
 	if (data.Encounter.DURATION === '0') return;
 	if (data.Encounter.damage === '0') return;
 
+	isActive = data.isActive;
 	let encounter = data.Encounter;
 
-	overlayData.updateEncounter(
-		encounter.duration,
-		encounter.damage,
-		encounter.dps,
-		encounter.deaths,
-		encounter.CurrentZoneName
-	);
-
 	let newCombatants = [];
-	let combatants = data.Combatant;
+	let combatants = Object.values(data.Combatant);
 
-	for (let i = 0; i < Object.values(combatants).length; i++) {
-		let combatant = Object.values(combatants)[i];
+	for (let i = 0; i < combatants.length; i++) {
+		let combatant = combatants[i];
 		let dps = processFloat(combatant.encdps);
 
 		let newCombatant = {
@@ -98,28 +90,109 @@ export function parseCombatData(data) {
 			newCombatant.job = 'LMB';
 			newCombatant.name = 'LMB';
 		}
-
 		newCombatants.push(newCombatant);
 	}
-	overlayData.updateCombatants(newCombatants);
 
-	if (overlayData.isNewEncounter(encounter)) {
+	currentEnc.id = Date.now();
+	currentEnc.encounter = getEncObject(encounter);
+	currentEnc.combatants = newCombatants;
+
+	if ($state.snapshot(isActive) === 'true') {
+		console.log('IS ACTIVE IS TRUE');
+		temporaryEnc.id = 0;
+		temporaryEnc.encounter = {
+			formattedDuration: '',
+			duration: '',
+			damage: '',
+			deaths: '',
+			zoneName: ''
+		};
+		temporaryEnc.combatants = [];
+		temporaryEnc.isExist = false;
+	}
+
+	if (isNewEncounter(encounter)) {
 		if (+encounter.DURATION > 5) {
-			overlayData.historyPush(encounter, newCombatants);
+			console.log('---PUSHING TO HISTORY---');
+
+			encHistory.push({
+				id: Date.now(),
+				encounter: getEncObject(encounter),
+				combatants: newCombatants
+			});
+
+			console.log($state.snapshot(encHistory));
+			console.log('---PUSHED TO HISTORY---');
 		}
 	}
 
-	return overlayData.encounter;
+	console.log('TEMPORARY ENC: ', temporaryEnc);
+
+	let result = [
+		$state.snapshot(currentEnc),
+		$state.snapshot(isActive),
+		$state.snapshot(encHistory)
+	];
+
+	return result;
 }
 
-export function getOverlayData() {
-	return { encounter: overlayData.encounter, combatants: overlayData.combatants };
+export function getEncData() {
+	return currentEnc;
 }
 
-export function getCombatHistory() {
-	return overlayData.history;
+export function getIsActive() {
+	return $state.snapshot(isActive);
 }
 
-export function combatHistoryLogger() {
-	return console.log(overlayData.history);
+export function getEncHistory() {
+	return encHistory;
+}
+
+export function getEncHistoryById(id) {
+	let result;
+
+	encHistory.map((enc) => {
+		if (enc.id === id) {
+			console.log('---SUCCESS---');
+			result = enc;
+			console.log('---SUCCESS---');
+		} else {
+			return;
+		}
+	});
+
+	if (!result) return;
+
+	return result;
+}
+
+export function getTempEnc() {
+	let derived = $derived(temporaryEnc);
+	return derived;
+}
+
+export function updateCurrentFromHistory(id) {
+	encHistory.map((enc) => {
+		if (enc.id === id) {
+			if (currentEnc.id === id) {
+				console.log('--FAILURE: ENC IS ALREADY CHOSEN--');
+				return;
+			}
+			console.log('---SUCCESS---');
+
+			temporaryEnc = {
+				id: enc.id,
+				encounter: enc.encounter,
+				combatants: enc.combatants,
+				isExist: true
+			};
+
+			console.log('---SUCCESS---');
+		} else {
+			return;
+		}
+	});
+
+	console.log('TEMP ENCOUNTER: ', $state.snapshot(temporaryEnc));
 }

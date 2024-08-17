@@ -34,7 +34,7 @@ function processNumber(number) {
 export function getWidthPercentage(number, topNumber) {
 	let result;
 
-	if (number === topNumber) {
+	if (+number === +topNumber) {
 		result = 100;
 	} else {
 		result = (+number / +topNumber) * 100;

@@ -14,9 +14,7 @@
 	startOverlay();
 </script>
 
-<div data-theme="pink">
-	<slot />
-</div>
+<slot />
 
 <style lang="postcss">
 	:global(:root) {

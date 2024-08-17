@@ -5,7 +5,10 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				bgt: 'var(--bgt)'
+				bgt: 'var(--bgt)',
+				pinkPrimary: '#f0d5de',
+				orangePrimary: '#f5c299',
+				greenPrimary: '#e2efd2'
 			},
 			fontFamily: {
 				sourceCode: 'var(--source-code)',

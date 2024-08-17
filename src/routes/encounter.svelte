@@ -2,7 +2,11 @@
 	import HistoryList from '../components/historyList.svelte';
 	import Players from '../components/players.svelte';
 	import MenuArrow from '../components/svgs/menuArrow.svelte';
+	import Cogs from '../components/svgs/cogs.svelte';
 	import { getEncData, getEncHistory, getTempEnc } from '../lib/encounter.svelte';
+	import Settings from '../components/settings.svelte';
+
+	let { settingsOpen = $bindable(), themeState = $bindable(), themes = $bindable() } = $props();
 
 	let overlay = getEncData();
 	let tempEnc = getTempEnc();
@@ -15,17 +19,35 @@
 </script>
 
 <div class="flex w-full flex-col text-sm">
-	{#if tempEnc.isExist === false}
+	{#if settingsOpen === true}
 		<div
 			class="flex flex-row items-center justify-between bg-bgt px-1 pt-[1px] font-medium text-primary"
 		>
 			<div class="w-full grow overflow-x-hidden">
-				<h2 class="text-nowrap text-center">{overlay.encounter.zoneName}</h2>
+				<h2 class="text-ellipsis text-nowrap">SETTINGS</h2>
+			</div>
+			<div>
+				<Cogs bind:isOpen={settingsOpen} />
+			</div>
+		</div>
+		<span class="h-[1px]"></span>
+		<Settings bind:allThemes={themes} bind:currentTheme={themeState} />
+	{:else if tempEnc.isExist === false}
+		<div
+			class="flex flex-row items-center justify-between bg-bgt px-1 pt-[1px] font-medium text-primary"
+		>
+			<div class="w-full grow overflow-x-hidden">
+				<h2 class="text-ellipsis text-nowrap">
+					{overlay.encounter.zoneName.length == 0
+						? 'Waiting for Encounter...'
+						: overlay.encounter.zoneName}
+				</h2>
 			</div>
 
-			<div class="flex shrink-0 flex-row items-center ps-1">
+			<div class="flex shrink-0 flex-row items-center justify-end ps-1">
 				<span class="text-xs">{overlay.encounter.formattedDuration}</span>
 				<MenuArrow bind:isOpen={historyOpen} />
+				<Cogs bind:isOpen={settingsOpen} />
 			</div>
 		</div>
 
@@ -55,6 +77,7 @@
 			<div class="flex shrink-0 flex-row items-center ps-1">
 				<span class="text-xs">{tempEnc.encounter.formattedDuration}</span>
 				<MenuArrow bind:isOpen={historyOpen} />
+				<Cogs bind:isOpen={settingsOpen} />
 			</div>
 		</div>
 

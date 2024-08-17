@@ -3,7 +3,7 @@
 </script>
 
 <button
-	class="grid h-5 w-5 place-items-center text-sGreenPrimary"
+	class="grid h-5 w-5 place-items-center text-primary"
 	onclick={() => {
 		isOpen = !isOpen;
 	}}

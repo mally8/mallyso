@@ -24,10 +24,10 @@
 	}
 </script>
 
-<ul class="text-primary bg-bgt flex flex-col items-center pt-1">
-	<h3 class="rounded-box w-full text-center">Encounter History List</h3>
+<ul class="flex flex-col items-center bg-bgt pt-1 text-primary">
+	<h3 class="w-full rounded-box text-center">Encounter History List</h3>
 	{#each encounterHistory as enc, index}
-		<li class="hover:bg-primary hover:text-base-100 group w-full px-1 pt-1">
+		<li class="group w-full px-1 pt-1 hover:bg-primary hover:text-base-100">
 			<button
 				class="flex w-full flex-row justify-between"
 				onclick={() => {
@@ -36,7 +36,7 @@
 			>
 				<div class="flex grow flex-row gap-1 overflow-x-hidden">
 					<span
-						class="badge badge-primary badge-sm group-hover:text-primary group-hover:bg-base-100 px-1 font-sourceCode font-bold"
+						class="badge badge-primary badge-sm px-1 font-sourceCode font-bold group-hover:bg-base-100 group-hover:text-primary"
 					>
 						{index + 1}
 					</span>

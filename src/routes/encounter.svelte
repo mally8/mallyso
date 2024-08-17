@@ -17,10 +17,10 @@
 <div class="flex w-full flex-col text-sm">
 	{#if tempEnc.isExist === false}
 		<div
-			class="text-primary bg-bgt flex flex-row items-center justify-between px-1 pt-[1px] font-medium"
+			class="flex flex-row items-center justify-between bg-bgt px-1 pt-[1px] font-medium text-primary"
 		>
 			<div class="w-full grow overflow-x-hidden">
-				<h2 class="text-nowrap">{overlay.encounter.zoneName}</h2>
+				<h2 class="text-nowrap text-center">{overlay.encounter.zoneName}</h2>
 			</div>
 
 			<div class="flex shrink-0 flex-row items-center ps-1">
@@ -41,7 +41,7 @@
 		</div>
 	{:else if tempEnc.isExist === true}
 		<div
-			class="text-primary bg-bgt flex flex-row items-center justify-between px-1 pt-[1px] font-medium"
+			class="flex flex-row items-center justify-between bg-bgt px-1 pt-[1px] font-medium text-primary"
 		>
 			<div class="flex w-full grow flex-row flex-nowrap items-center gap-1 overflow-x-hidden">
 				{#if tempEnc.encounter.index > 0}

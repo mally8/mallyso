@@ -14,7 +14,7 @@
 	startOverlay();
 </script>
 
-<div data-theme="green">
+<div data-theme="pink">
 	<slot />
 </div>
 

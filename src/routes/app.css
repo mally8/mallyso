@@ -16,6 +16,17 @@
 	background-color: transparent;
 }
 
+[data-theme='orange'] {
+	--bgt: rgba(57, 50, 45, 0.7);
+	background-color: transparent;
+}
+
+[data-theme='pink'] {
+	/* 2c2124 */
+	--bgt: rgba(44, 33, 36, 0.5);
+	background-color: transparent;
+}
+
 body {
 	background-color: transparent;
 }

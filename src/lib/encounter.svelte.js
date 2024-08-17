@@ -100,20 +100,11 @@ export function parseCombatData(data) {
 
 	// Redirect the UI to the Active Encounter and clear up the variables associated with it.
 	if ($state.snapshot(isActive) === 'true') {
-		temporaryEnc.id = 0;
-		temporaryEnc.encounter = {
-			formattedDuration: '',
-			duration: '',
-			damage: '',
-			deaths: '',
-			zoneName: ''
-		};
-		temporaryEnc.combatants = [];
-		temporaryEnc.isExist = false;
-		temporaryEnc.index = 0;
+		clearTempEnc();
 	}
 
 	if (isNewEncounter(encounter)) {
+		// Filter out accidental wipes.
 		if (+encounter.DURATION > 5) {
 			console.log('---PUSHING TO HISTORY---');
 
@@ -152,4 +143,18 @@ export function getEncHistory() {
 export function getTempEnc() {
 	let derived = $derived(temporaryEnc);
 	return derived;
+}
+
+export function clearTempEnc() {
+	temporaryEnc.id = 0;
+	temporaryEnc.encounter = {
+		formattedDuration: '',
+		duration: '',
+		damage: '',
+		deaths: '',
+		zoneName: ''
+	};
+	temporaryEnc.combatants = [];
+	temporaryEnc.isExist = false;
+	temporaryEnc.index = 0;
 }

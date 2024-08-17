@@ -1,4 +1,6 @@
 <script>
+	import Update from './svgs/update.svelte';
+
 	let { encounterHistory = $bindable(), temporaryEnc = $bindable() } = $props();
 
 	function handleClick(id, index) {
@@ -24,8 +26,11 @@
 	}
 </script>
 
-<ul class="flex flex-col items-center bg-bgt pt-1 text-primary">
-	<h3 class="w-full rounded-box text-center">Encounter History List</h3>
+<ul class="flex flex-col items-center bg-bgt text-primary">
+	<div class="flex w-full flex-row items-center justify-between px-1">
+		<h3 class="text-ellipsis text-nowrap">Encounter History List</h3>
+		<Update />
+	</div>
 	{#each encounterHistory as enc, index}
 		<li class="group w-full px-1 pt-1 hover:bg-primary hover:text-base-100">
 			<button

@@ -34,7 +34,7 @@
 					handleClick(enc.id, index);
 				}}
 			>
-				<div class="flex flex-row gap-1">
+				<div class="flex grow flex-row gap-1 overflow-x-hidden">
 					<span
 						class="badge badge-primary badge-sm group-hover:text-primary group-hover:bg-base-100 px-1 font-sourceCode font-bold"
 					>
@@ -45,7 +45,7 @@
 					</h4>
 				</div>
 
-				<span class="ps-1 text-xs">{enc.encounter.formattedDuration}</span>
+				<span class="shrink-0 ps-1 text-xs">{enc.encounter.formattedDuration}</span>
 			</button>
 		</li>
 	{/each}

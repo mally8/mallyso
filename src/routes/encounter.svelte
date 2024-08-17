@@ -11,7 +11,7 @@
 	let topDamageCombatant = $derived(overlay.combatants[0].damage);
 	let historyOpen = $state(false);
 
-	let tempTopDamage = $derived(tempEnc.combatants[0]);
+	let tempTopDamage = $derived(tempEnc.combatants[0].damage);
 </script>
 
 <div class="flex w-full flex-col text-sm">

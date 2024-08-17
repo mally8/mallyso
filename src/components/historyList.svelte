@@ -24,7 +24,7 @@
 	}
 </script>
 
-<ul class="text-primary bg-bgt flex flex-col items-center">
+<ul class="text-primary bg-bgt flex flex-col items-center pt-1">
 	<h3 class="rounded-box w-full text-center">Encounter History List</h3>
 	{#each encounterHistory as enc, index}
 		<li class="hover:bg-primary hover:text-base-100 group w-full px-1 pt-1">

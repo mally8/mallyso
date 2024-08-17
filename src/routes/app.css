@@ -11,6 +11,11 @@
 	--source-code: 'Source Code Pro', monospace;
 }
 
+[data-theme='green'] {
+	--bgt: rgba(63, 80, 69, 0.7);
+	background-color: transparent;
+}
+
 body {
 	background-color: transparent;
 }

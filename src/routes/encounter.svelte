@@ -17,9 +17,9 @@
 <div class="flex w-full flex-col text-sm">
 	{#if tempEnc.isExist === false}
 		<div
-			class="flex flex-row items-center justify-between bg-sGreenDark9 px-1 pt-[1px] font-medium text-sGreenPrimary"
+			class="text-primary bg-bgt flex flex-row items-center justify-between px-1 pt-[1px] font-medium"
 		>
-			<div class="w-full grow overflow-x-auto">
+			<div class="w-full grow overflow-x-hidden">
 				<h2 class="text-nowrap">{overlay.encounter.zoneName}</h2>
 			</div>
 
@@ -41,9 +41,14 @@
 		</div>
 	{:else if tempEnc.isExist === true}
 		<div
-			class="flex flex-row items-center justify-between bg-sGreenDark9 px-1 pt-[1px] font-medium text-pink-400"
+			class="text-primary bg-bgt flex flex-row items-center justify-between px-1 pt-[1px] font-medium"
 		>
-			<div class="w-full grow overflow-x-auto">
+			<div class="flex w-full grow flex-row flex-nowrap items-center gap-1 overflow-x-hidden">
+				{#if tempEnc.encounter.index > 0}
+					<span class="badge badge-primary badge-sm px-1 font-sourceCode font-bold"
+						>{tempEnc.encounter.index}</span
+					>
+				{/if}
 				<h2 class="text-nowrap">{tempEnc.encounter.zoneName}</h2>
 			</div>
 

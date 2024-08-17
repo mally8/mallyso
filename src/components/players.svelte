@@ -6,7 +6,7 @@
 	let { playerData, top_Damage } = $props();
 </script>
 
-<div class="flex flex-row items-center justify-between bg-sGreenDark9 px-1 text-sGreenPrimary">
+<div class="text-primary bg-bgt flex flex-row items-center justify-between px-1">
 	<div class="flex w-[15ch] grow flex-row items-center gap-1 overflow-x-hidden text-nowrap">
 		<JobIcon jobSVG={getJobIcon(playerData.job)} />
 		<p>{playerData.name}</p>
@@ -14,6 +14,6 @@
 	<span class="shrink-0 ps-1 text-xs">{playerData.dps}</span>
 </div>
 <span
-	class="h-[1px] bg-sGreenPrimary"
+	class="bg-primary h-[1px]"
 	style={`width: ${getWidthPercentage(playerData.damage, top_Damage)}%;`}
 ></span>

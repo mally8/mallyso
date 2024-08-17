@@ -1,7 +1,7 @@
 <script>
 	let { encounterHistory = $bindable(), temporaryEnc = $bindable() } = $props();
 
-	function handleClick(id) {
+	function handleClick(id, index) {
 		if (encounterHistory.length === 0) return;
 
 		let data;
@@ -19,27 +19,33 @@
 		temporaryEnc.encounter = data.encounter;
 		temporaryEnc.combatants = data.combatants;
 		temporaryEnc.id = data.id;
+
+		temporaryEnc.encounter.index = index + 1;
 	}
 </script>
 
-<ul class="flex flex-col items-center bg-sGreenDark9 px-1 text-sGreenPrimary">
-	<h3 class="w-full border-b border-b-sGreenPrimary text-center">Encounter History List</h3>
+<ul class="text-primary bg-bgt flex flex-col items-center">
+	<h3 class="rounded-box w-full text-center">Encounter History List</h3>
 	{#each encounterHistory as enc, index}
-		<li class="group w-full pt-1 hover:bg-sGreenPrimary hover:text-sGreenDark">
+		<li class="hover:bg-primary hover:text-base-100 group w-full px-1 pt-1">
 			<button
 				class="flex w-full flex-row justify-between"
 				onclick={() => {
-					handleClick(enc.id);
+					handleClick(enc.id, index);
 				}}
 			>
-				<h4 class="overflow-x-hidden text-nowrap">
+				<div class="flex flex-row gap-1">
 					<span
-						class="bg-sGreenPrimary px-1 text-sGreenDark group-hover:bg-sGreenDark9 group-hover:text-sGreenPrimary"
-						>{index + 1}:</span
+						class="badge badge-primary badge-sm group-hover:text-primary group-hover:bg-base-100 px-1 font-sourceCode font-bold"
 					>
-					{enc.encounter.zoneName}
-				</h4>
-				<span class="text-xs">{enc.encounter.formattedDuration}</span>
+						{index + 1}
+					</span>
+					<h4 class="overflow-x-hidden text-nowrap text-center">
+						{enc.encounter.zoneName}
+					</h4>
+				</div>
+
+				<span class="ps-1 text-xs">{enc.encounter.formattedDuration}</span>
 			</button>
 		</li>
 	{/each}

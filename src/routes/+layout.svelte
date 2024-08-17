@@ -14,11 +14,16 @@
 	startOverlay();
 </script>
 
-<slot />
+<div data-theme="green">
+	<slot />
+</div>
 
 <style lang="postcss">
+	:global(:root) {
+		background-color: transparent;
+	}
 	:global(html) {
-		/* background-color: theme(colors.gray.600); */
+		background-color: transparent;
 		color: theme(colors.slate.200);
 		font-family: var(--source-code);
 		text-rendering: optimizeLegibility;

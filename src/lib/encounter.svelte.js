@@ -25,7 +25,8 @@ let temporaryEnc = $state({
 		zoneName: ''
 	},
 	combatants: [],
-	isExist: false
+	isExist: false,
+	index: 0
 });
 
 let isActive = $state('false');
@@ -109,6 +110,7 @@ export function parseCombatData(data) {
 		};
 		temporaryEnc.combatants = [];
 		temporaryEnc.isExist = false;
+		temporaryEnc.index = 0;
 	}
 
 	if (isNewEncounter(encounter)) {

@@ -15,6 +15,7 @@ let currentEnc = $state({
 	combatants: []
 });
 
+// This variable is used to show an Encounter from the saved History.
 let temporaryEnc = $state({
 	id: 0,
 	encounter: {
@@ -58,7 +59,6 @@ function isNewEncounter(encounter) {
 
 function updateLastEncounter(encounter) {
 	lastEncounter = getEncObject(encounter);
-	console.log('LAST ENCOUNTER: ', lastEncounter);
 }
 
 export function parseCombatData(data) {
@@ -98,8 +98,8 @@ export function parseCombatData(data) {
 	currentEnc.encounter = getEncObject(encounter);
 	currentEnc.combatants = newCombatants;
 
+	// Redirect the UI to the Active Encounter and clear up the variables associated with it.
 	if ($state.snapshot(isActive) === 'true') {
-		console.log('IS ACTIVE IS TRUE');
 		temporaryEnc.id = 0;
 		temporaryEnc.encounter = {
 			formattedDuration: '',
@@ -128,8 +128,6 @@ export function parseCombatData(data) {
 		}
 	}
 
-	console.log('TEMPORARY ENC: ', temporaryEnc);
-
 	let result = [
 		$state.snapshot(currentEnc),
 		$state.snapshot(isActive),
@@ -151,50 +149,7 @@ export function getEncHistory() {
 	return encHistory;
 }
 
-export function getEncHistoryById(id) {
-	let result;
-
-	encHistory.map((enc) => {
-		if (enc.id === id) {
-			console.log('---SUCCESS---');
-			result = enc;
-			console.log('---SUCCESS---');
-		} else {
-			return;
-		}
-	});
-
-	if (!result) return;
-
-	return result;
-}
-
 export function getTempEnc() {
 	let derived = $derived(temporaryEnc);
 	return derived;
-}
-
-export function updateCurrentFromHistory(id) {
-	encHistory.map((enc) => {
-		if (enc.id === id) {
-			if (currentEnc.id === id) {
-				console.log('--FAILURE: ENC IS ALREADY CHOSEN--');
-				return;
-			}
-			console.log('---SUCCESS---');
-
-			temporaryEnc = {
-				id: enc.id,
-				encounter: enc.encounter,
-				combatants: enc.combatants,
-				isExist: true
-			};
-
-			console.log('---SUCCESS---');
-		} else {
-			return;
-		}
-	});
-
-	console.log('TEMP ENCOUNTER: ', $state.snapshot(temporaryEnc));
 }

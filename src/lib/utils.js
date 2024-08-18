@@ -42,3 +42,14 @@ export function getWidthPercentage(number, topNumber) {
 
 	return result.toFixed(2);
 }
+
+export function getNumberByK(number) {
+	let num = +number;
+
+	if (num >= 1000) {
+		let result = (num / 1000).toFixed(1);
+		result = `${result}K`;
+		return result;
+	}
+	return num;
+}

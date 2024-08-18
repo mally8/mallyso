@@ -52,7 +52,7 @@ export function getNumberByK(number) {
 		result = `${result}M`;
 		return result;
 	}
-	l;
+
 	if (num >= 1000) {
 		result = (num / 1000).toFixed(1);
 		result = `${result}K`;

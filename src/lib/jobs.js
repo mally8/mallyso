@@ -1,6 +1,7 @@
 export const TANK = 'Tank';
 export const HEALER = 'Healer';
 export const DPS = 'DPS';
+export const MISC = 'Misc';
 
 // Grabbed from https://github.com/xivapi/classjob-icons/blob/master/svg/class_job_019.svg
 
@@ -119,6 +120,11 @@ const jobs = {
 		shortName: 'BLU',
 		role: DPS,
 		icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path d="M868 301q-2 0-13.5 2t-20.5 3q-2-33-29.5-63.5T745 206q-20-3-39 7-16 9-24 23.5t0 21.5q2 2 13 4 15 2 22 5 13 6 17 19 8 22 2 36.5T716 342l-97 29q-11 4-30 11-24 9-38 12-23 6-51 6t-51-6q-14-3-37-12-19-7-29-10l-32-10q-96-29-138-41-72-21-81-20-37 4-14 71l1 2q24 75 61 134 51 82 105 89 42 6 79-5 23-6 60-26 24-12 36-17 21-9 40-10 18 1 38 9 12 5 34 16-17 32-50 94-38 73-43 84l-7 15q-7 15-9 22-3 10 2.5 14t16.5-4q6-5 16-16l3-3q19-19 68-78 64-75 84-93 31 2 62-2 54-7 105-89 37-59 61-134l1-2q8-23 9-39 1-29-23-32zM290 521q-32-4-56-33-19-22-31-56-9-28-8-44 1-11 58 6 48 15 108 41.5t69 36-12.5 23T362 516q-39 9-72 5zm420 0q-33 4-72-5-34-8-55.5-21.5t-12.5-23 69-36T747 394q57-17 58-6 1 16-8 44-12 34-31 56-24 29-56 33z"/></svg>`
+	},
+	LMB: {
+		shortName: 'LMB',
+		role: MISC,
+		icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path fill="none" d="M0 0h24v24H0z"></path> <path fill-rule="nonzero" d="M7.05 13.406l3.534 3.536-1.413 1.414 1.415 1.415-1.414 1.414-2.475-2.475-2.829 2.829-1.414-1.414 2.829-2.83-2.475-2.474 1.414-1.414 1.414 1.413 1.413-1.414zM3 3l3.546.003 11.817 11.818 1.415-1.414 1.414 1.414-2.474 2.475 2.828 2.829-1.414 1.414-2.829-2.829-2.475 2.475-1.414-1.414 1.414-1.415L3.003 6.531 3 3zm14.457 0L21 3.003l.002 3.523-4.053 4.052-3.536-3.535L17.457 3z"></path> </g> </g></svg>'
 	}
 };
 

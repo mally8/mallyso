@@ -9,6 +9,7 @@ let currentEnc = $state({
 		formattedDuration: '',
 		duration: '',
 		damage: '',
+		dps: '',
 		deaths: '',
 		zoneName: ''
 	},
@@ -22,6 +23,7 @@ let temporaryEnc = $state({
 		formattedDuration: '',
 		duration: '',
 		damage: '',
+		dps: '',
 		deaths: '',
 		zoneName: ''
 	},
@@ -41,6 +43,7 @@ function getEncObject(encounter) {
 		formattedDuration: encounter.duration,
 		duration: +encounter.DURATION,
 		damage: encounter.damage,
+		dps: +encounter.dps,
 		deaths: encounter.deaths,
 		zoneName: encounter.CurrentZoneName
 	};
@@ -151,6 +154,7 @@ export function clearTempEnc() {
 		formattedDuration: '',
 		duration: '',
 		damage: '',
+		dps: '',
 		deaths: '',
 		zoneName: ''
 	};

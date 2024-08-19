@@ -28,7 +28,7 @@
 		</div>
 		<div class="flex grow flex-row justify-between">
 			<p>CRIT%: <span>{playerData.damagePct}</span></p>
-			<p>DIRECTHIT: <span>{playerData.directHitPct}</span></p>
+			<p>DIRECTHIT%: <span>{playerData.directHitPct}</span></p>
 		</div>
 		<div class="flex grow flex-row justify-between">
 			<p>CDHIT%: <span>{playerData.critDirectHitPct}</span></p>

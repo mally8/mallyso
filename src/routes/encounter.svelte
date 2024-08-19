@@ -5,6 +5,7 @@
 	import Cogs from '../components/svgs/cogs.svelte';
 	import { getEncData, getEncHistory, getTempEnc } from '../lib/encounter.svelte';
 	import Settings from '../components/settings.svelte';
+	import { getNumberByK } from '../lib/utils';
 
 	let { settingsOpen = $bindable(), themeState = $bindable(), themes = $bindable() } = $props();
 
@@ -60,6 +61,10 @@
 			{#each overlay.combatants as player}
 				<Players playerData={player} top_Damage={topDamageCombatant} />
 			{/each}
+			<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
+				<p>TOTAL: <span>{getNumberByK(overlay.encounter.damage)}</span></p>
+				<p>DPS: <span>{getNumberByK(overlay.encounter.dps)}</span></p>
+			</div>
 		</div>
 	{:else if tempEnc.isExist === true}
 		<div
@@ -90,6 +95,10 @@
 			{#each tempEnc.combatants as tempPlayer}
 				<Players playerData={tempPlayer} top_Damage={tempTopDamage} />
 			{/each}
+			<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
+				<p>TOTAL: <span>{getNumberByK(overlay.encounter.damage)}</span></p>
+				<p>DPS: <span>{getNumberByK(overlay.encounter.dps)}</span></p>
+			</div>
 		</div>
 	{/if}
 </div>

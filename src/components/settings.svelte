@@ -10,7 +10,7 @@
 <div class="flex flex-col">
 	<!-- Themes -->
 	<div
-		class="flex flex-col items-center justify-between border-primary bg-bgt pt-[1px] text-primary"
+		class="border-primary text-primary flex flex-col items-center justify-between bg-bgt pt-[1px]"
 	>
 		<h3 class="w-full shrink-0 ps-1 font-normal">THEME</h3>
 		<ul class="flex w-full list-none flex-row items-center justify-between p-1">
@@ -22,13 +22,13 @@
 						}}
 						class={`${
 							theme === 'pink'
-								? 'text-pinkPrimary border-pinkPrimary hover:bg-pinkPrimary hover:text-neutral'
+								? 'hover:text-neutral border-pinkPrimary text-pinkPrimary hover:bg-pinkPrimary'
 								: theme === 'orange'
-									? 'text-orangePrimary border-orangePrimary hover:bg-orangePrimary hover:text-neutral'
+									? 'hover:text-neutral border-orangePrimary text-orangePrimary hover:bg-orangePrimary'
 									: theme === 'green'
-										? 'text-greenPrimary border-greenPrimary hover:bg-greenPrimary hover:text-neutral'
+										? 'hover:text-neutral border-greenPrimary text-greenPrimary hover:bg-greenPrimary'
 										: 'border-primary text-primary'
-						} rounded-btn border px-2`}
+						} rounded-primary border px-2`}
 					>
 						{theme.toUpperCase()}
 					</button>

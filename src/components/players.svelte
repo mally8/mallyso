@@ -24,10 +24,10 @@
 	<div class="flex w-full flex-col bg-bgt px-1 text-xs text-primary">
 		<div class="flex grow flex-row justify-between">
 			<p>DAMAGE: <span>{getNumberByK(playerData.damage)}</span></p>
-			<p>DAMAGE%: <span>{playerData.critHitPct}</span></p>
+			<p>DAMAGE%: <span>{playerData.damagePct}</span></p>
 		</div>
 		<div class="flex grow flex-row justify-between">
-			<p>CRIT%: <span>{playerData.damagePct}</span></p>
+			<p>CRIT%: <span>{playerData.critHitPct}</span></p>
 			<p>DIRECTHIT%: <span>{playerData.directHitPct}</span></p>
 		</div>
 		<div class="flex grow flex-row justify-between">

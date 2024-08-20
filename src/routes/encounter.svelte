@@ -61,7 +61,7 @@
 			{#each overlay.combatants as player}
 				<Players playerData={player} top_Damage={topDamageCombatant} />
 			{/each}
-			{#if overlay.encounter.length != 0}
+			{#if overlay.encounter.zoneName.length != 0}
 				<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
 					<p>TOTAL: <span>{getNumberByK(overlay.encounter.damage)}</span></p>
 					<p>DPS: <span>{getNumberByK(overlay.encounter.dps)}</span></p>

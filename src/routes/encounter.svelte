@@ -61,10 +61,12 @@
 			{#each overlay.combatants as player}
 				<Players playerData={player} top_Damage={topDamageCombatant} />
 			{/each}
-			<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
-				<p>TOTAL: <span>{getNumberByK(overlay.encounter.damage)}</span></p>
-				<p>DPS: <span>{getNumberByK(overlay.encounter.dps)}</span></p>
-			</div>
+			{#if overlay.encounter.length != 0}
+				<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
+					<p>TOTAL: <span>{getNumberByK(overlay.encounter.damage)}</span></p>
+					<p>DPS: <span>{getNumberByK(overlay.encounter.dps)}</span></p>
+				</div>
+			{/if}
 		</div>
 	{:else if tempEnc.isExist === true}
 		<div

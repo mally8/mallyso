@@ -1,7 +1,7 @@
 <script>
-	import Encounter from './encounter.svelte';
+	import Encounter from '../components/encounter.svelte';
 
-	let settingsBol = $state(false);
+	let settingsBolean = $state(false);
 	let currentTheme = $state('pink');
 	let allThemes = $state(['pink', 'orange', 'green']);
 
@@ -20,7 +20,7 @@
 <div class="h-full w-full" data-theme={currentTheme}>
 	<Encounter
 		bind:themeState={currentTheme}
-		bind:settingsOpen={settingsBol}
+		bind:settingsOpen={settingsBolean}
 		bind:themes={allThemes}
 	/>
 </div>

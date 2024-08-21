@@ -87,6 +87,7 @@ export function parseCombatData(data) {
 			critHitPct: combatant['crithit%'],
 			directHitPct: combatant.DirectHitPct,
 			critDirectHitPct: combatant.CritDirectHitPct,
+			biggestHit: combatant.maxhit,
 			deaths: combatant.deaths
 		};
 

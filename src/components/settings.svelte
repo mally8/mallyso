@@ -1,4 +1,5 @@
 <script>
+	import changeLog from '../lib/changeLog';
 	let { currentTheme = $bindable(), allThemes = $bindable() } = $props();
 
 	function handleClick(theme) {
@@ -9,9 +10,7 @@
 
 <div class="flex flex-col">
 	<!-- Themes -->
-	<div
-		class="border-primary text-primary flex flex-col items-center justify-between bg-bgt pt-[1px]"
-	>
+	<div class="flex flex-col items-center justify-between bg-bgt pt-[1px] text-primary">
 		<h3 class="w-full shrink-0 ps-1 font-normal">THEME</h3>
 		<ul class="flex w-full list-none flex-row items-center justify-between p-1">
 			{#each allThemes as theme}
@@ -22,11 +21,11 @@
 						}}
 						class={`${
 							theme === 'pink'
-								? 'hover:text-neutral border-pinkPrimary text-pinkPrimary hover:bg-pinkPrimary'
+								? 'border-pinkPrimary text-pinkPrimary hover:bg-pinkPrimary hover:text-neutral'
 								: theme === 'orange'
-									? 'hover:text-neutral border-orangePrimary text-orangePrimary hover:bg-orangePrimary'
+									? 'border-orangePrimary text-orangePrimary hover:bg-orangePrimary hover:text-neutral'
 									: theme === 'green'
-										? 'hover:text-neutral border-greenPrimary text-greenPrimary hover:bg-greenPrimary'
+										? 'border-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-neutral'
 										: 'border-primary text-primary'
 						} rounded-primary border px-2`}
 					>
@@ -37,4 +36,20 @@
 		</ul>
 	</div>
 	<span class="h-[1px]"></span>
+	<div class="flex flex-col items-center justify-between bg-bgt pt-[1px] text-primary">
+		<h3 class="w-full shrink-0 ps-1 font-normal">CHANGELOG</h3>
+		<ul class="flex w-full flex-col gap-1 px-1 pb-1">
+			{#each changeLog as log}
+				<li class="text-start">
+					<div class="flex flex-row justify-between text-sm">
+						<h4>Version:</h4>
+						<span class="badge badge-sm font-medium">{log.version}</span>
+					</div>
+					<p class="ps-1 text-xs">
+						{log.changes}
+					</p>
+				</li>
+			{/each}
+		</ul>
+	</div>
 </div>

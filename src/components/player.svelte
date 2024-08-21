@@ -1,5 +1,5 @@
 <script>
-	import { getNumberByK, getWidthPercentage } from '../lib/utils';
+	import { formatBigHit, getNumberByK, getWidthPercentage } from '../lib/utils';
 	import { getJobIcon } from '../lib/jobs';
 	import JobIcon from './jobIcon.svelte';
 
@@ -33,6 +33,10 @@
 		<div class="flex grow flex-row justify-between">
 			<p>CDHIT%: <span>{playerData.critDirectHitPct}</span></p>
 			<p>DEATHS: <span>{playerData.deaths}</span></p>
+		</div>
+		<div class="flex grow flex-row justify-between">
+			<p>MAX HIT:</p>
+			<span>{formatBigHit(playerData.biggestHit)}</span>
 		</div>
 	</div>
 {/if}

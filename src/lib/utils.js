@@ -61,3 +61,10 @@ export function getNumberByK(number) {
 
 	return num;
 }
+
+export function formatBigHit(string) {
+	let hit = string.split('-');
+	const result = `${hit[0]} ${getNumberByK(hit[1])}`;
+	console.log(result);
+	return result;
+}

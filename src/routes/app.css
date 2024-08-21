@@ -14,7 +14,8 @@
 }
 
 [data-theme='green'] {
-	--bgt: rgba(63, 80, 69, 0.7);
+	--bgt: rgba(63, 80, 69, 0.5);
+	--bgt-alt: rgba(63, 80, 69, 0.7);
 	--primary: hsl(87, 48%, 88%);
 	--neutral: hsl(220, 6%, 10%);
 	--base: hsl(85, 12%, 20%);
@@ -22,7 +23,8 @@
 }
 
 [data-theme='orange'] {
-	--bgt: rgba(57, 50, 45, 0.7);
+	--bgt: rgba(57, 50, 45, 0.5);
+	--bgt-alt: rgba(57, 50, 45, 0.7);
 	--primary: hsl(27, 82%, 78%);
 	--neutral: hsl(220, 6%, 10%);
 	--base: hsl(25, 12%, 20%);
@@ -32,6 +34,7 @@
 [data-theme='pink'] {
 	/* 2c2124 */
 	--bgt: rgba(44, 33, 36, 0.5);
+	--bgt-alt: rgba(44, 33, 36, 0.7);
 	--primary: hsl(340, 47%, 89%);
 	--neutral: hsl(220, 6%, 10%);
 	--base: hsl(344, 14%, 15%);

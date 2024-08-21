@@ -1,10 +1,10 @@
 <script>
-	import HistoryList from '../components/historyList.svelte';
-	import Players from '../components/players.svelte';
-	import MenuArrow from '../components/svgs/menuArrow.svelte';
-	import Cogs from '../components/svgs/cogs.svelte';
+	import HistoryList from './historyList.svelte';
+	import Player from './player.svelte';
+	import MenuArrow from './svgs/menuArrow.svelte';
+	import Cogs from './svgs/cogs.svelte';
 	import { getEncData, getEncHistory, getTempEnc } from '../lib/encounter.svelte';
-	import Settings from '../components/settings.svelte';
+	import Settings from './settings.svelte';
 	import { getNumberByK } from '../lib/utils';
 
 	let { settingsOpen = $bindable(), themeState = $bindable(), themes = $bindable() } = $props();
@@ -59,7 +59,7 @@
 
 		<div class="flex flex-col pb-1">
 			{#each overlay.combatants as player}
-				<Players playerData={player} top_Damage={topDamageCombatant} />
+				<Player playerData={player} top_Damage={topDamageCombatant} />
 			{/each}
 			{#if overlay.encounter.zoneName.length != 0}
 				<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
@@ -95,7 +95,7 @@
 
 		<div class="flex flex-col pb-1">
 			{#each tempEnc.combatants as tempPlayer}
-				<Players playerData={tempPlayer} top_Damage={tempTopDamage} />
+				<Player playerData={tempPlayer} top_Damage={tempTopDamage} />
 			{/each}
 			<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
 				<p>TOTAL: <span>{getNumberByK(overlay.encounter.damage)}</span></p>

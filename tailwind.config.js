@@ -5,6 +5,7 @@ export default {
 		extend: {
 			colors: {
 				bgt: 'var(--bgt)',
+				'bgt-alt': 'var(--bgt-alt)',
 				primary: 'var(--primary)',
 				neutral: 'var(--neutral)',
 				base: 'var(--base)',

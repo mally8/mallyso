@@ -10,7 +10,9 @@
 		player: {
 			// 0 -> 24500 | 1 -> 24.5k
 			dpsFormat: 0,
-			nameFormat: 0
+			// 0 -> First Last | 1 -> F. Last | 2 -> First L. | 3 -> F. L.
+			nameFormat: 0,
+			allNameFormats: ['First Last', 'F. Last', 'First L.', 'F. L.']
 		}
 	});
 
@@ -31,6 +33,16 @@
 			localStorage.setItem('playerDpsFormat', 0);
 		} else {
 			config.player.dpsFormat = storedDpsFormat;
+		}
+	});
+
+	$effect(() => {
+		let storedNameFormat = localStorage.getItem('playerNameFormat');
+
+		if (!storedNameFormat) {
+			localStorage.setItem('playerNameFormat', 0);
+		} else {
+			config.player.nameFormat = storedNameFormat;
 		}
 	});
 </script>

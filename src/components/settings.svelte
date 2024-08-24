@@ -1,13 +1,21 @@
 <script>
 	import changeLog from '../lib/changeLog';
-	let { config = $bindable() } = $props();
 
-	function handleThemeClick(theme) {
+	let { config = $bindable() } = $props();
+	let nameOpen = $state(false);
+
+	function handleClickTheme(theme) {
 		config.theme.currentTheme = theme;
 		localStorage.setItem('theme', theme);
 	}
 
-	function handleDpsFormatClick(format) {
+	function handleClickNameFormat(index) {
+		config.player.nameFormat = index;
+		localStorage.setItem('playerNameFormat', index);
+		nameOpen = false;
+	}
+
+	function handleClickDpsFormat(format) {
 		config.player.dpsFormat = format;
 		localStorage.setItem('playerDpsFormat', format);
 	}
@@ -24,7 +32,7 @@
 				<li data-theme={theme}>
 					<button
 						onclick={() => {
-							handleThemeClick(theme);
+							handleClickTheme(theme);
 						}}
 						class={`${
 							config.theme.currentTheme === theme
@@ -43,8 +51,8 @@
 	<div class="flex flex-col bg-bgt pb-1 pt-[1px] text-primary">
 		<h3 class="w-full shrink-0 text-center font-normal">PLAYERS</h3>
 		<!-- DPS -->
-		<div class="flex w-full flex-row justify-between px-1">
-			<p class="text-sm">DPS FORMAT:</p>
+		<div class="flex w-full flex-row justify-between px-1 pb-1 pt-1">
+			<p class="text-sm">DPS:</p>
 			<ul class="flex flex-row items-center rounded-primary border border-primary">
 				<li>
 					<button
@@ -54,7 +62,7 @@
 								: 'bg-transparent text-primary hover:bg-primary hover:text-neutral'
 						} px-1`}
 						onclick={() => {
-							handleDpsFormatClick(0);
+							handleClickDpsFormat(0);
 						}}
 					>
 						24500
@@ -68,13 +76,47 @@
 								: 'bg-transparent text-primary hover:bg-primary hover:text-neutral'
 						} border-s border-s-primary px-1`}
 						onclick={() => {
-							handleDpsFormatClick(1);
+							handleClickDpsFormat(1);
 						}}
 					>
 						24.5K
 					</button>
 				</li>
 			</ul>
+		</div>
+		<!-- Name -->
+		<div class="flex w-full flex-row items-center justify-between px-1">
+			<p class="text-sm">Name:</p>
+			<div class="group relative rounded-primary border border-primary">
+				<button
+					class="w-24 bg-primary text-center text-neutral"
+					onclick={() => {
+						nameOpen = !nameOpen;
+					}}
+				>
+					{config.player.allNameFormats[config.player.nameFormat]}
+				</button>
+				{#if nameOpen}
+					<div
+						class="absolute -end-[1px] -start-[1px] top-[100%] z-10 inline-flex flex-col border-x border-b border-primary bg-bgt-alt"
+					>
+						{#each config.player.allNameFormats as nameFormat, index}
+							<button
+								class={`${
+									config.player.nameFormat == index
+										? 'hidden'
+										: 'bg-transparent text-primary hover:bg-primary hover:text-neutral'
+								} ps-1`}
+								onclick={() => {
+									handleClickNameFormat(index);
+								}}
+							>
+								{nameFormat}
+							</button>
+						{/each}
+					</div>
+				{/if}
+			</div>
 		</div>
 	</div>
 	<span class="h-[1px]"></span>

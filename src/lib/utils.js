@@ -14,7 +14,7 @@ export function processFloat(number) {
 
 export function processNumber(number) {
 	const num = number;
-	let storedDpsFormat = localStorage.getItem('playerDpsFormat');
+	const storedDpsFormat = localStorage.getItem('playerDpsFormat');
 	let result;
 
 	if (!storedDpsFormat || storedDpsFormat == 0) {
@@ -25,6 +25,36 @@ export function processNumber(number) {
 		result = formatNumbers(num);
 		return result;
 	}
+}
+
+export function processName(name) {
+	const splitName = name.split(' ');
+	const storedNameFormat = localStorage.getItem('playerNameFormat');
+	let result;
+
+	if (name === 'YOU') return name;
+
+	if (!storedNameFormat || storedNameFormat == 0) {
+		result = name;
+		return result;
+	}
+
+	if (storedNameFormat == 1) {
+		result = `${splitName[0].split('')[0]}. ${splitName[1]}`;
+		return result;
+	}
+
+	if (storedNameFormat == 2) {
+		result = `${splitName[0]} ${splitName[1].split('')[0]}.`;
+		return result;
+	}
+
+	if (storedNameFormat == 3) {
+		result = `${splitName[0].split('')[0]}. ${splitName[1].split('')[0]}.`;
+		return result;
+	}
+
+	return name;
 }
 
 export function getWidthPercentage(number, topNumber) {

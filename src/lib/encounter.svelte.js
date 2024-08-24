@@ -1,7 +1,7 @@
 // TODO: Make the parsing function here and cleanup the file.
 // TODO: Think about Archived Encounters later on once the simple overlay functionality is done.
 
-import { processFloat } from './utils';
+import { processFloat, processName } from './utils';
 
 let currentEnc = $state({
 	id: 0,
@@ -77,9 +77,10 @@ export function parseCombatData(data) {
 	for (let i = 0; i < combatants.length; i++) {
 		let combatant = combatants[i];
 		let dps = processFloat(combatant.encdps);
+		let name = processName(combatant.name);
 
 		let newCombatant = {
-			name: combatant.name,
+			name: name,
 			job: combatant.Job,
 			dps: dps.formatted,
 			damage: combatant.damage,

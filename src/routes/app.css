@@ -41,6 +41,10 @@
 	background-color: transparent;
 }
 
+body {
+	background-color: transparent;
+}
+
 .badge {
 	display: inline-flex;
 	align-items: center;
@@ -71,8 +75,4 @@
 	line-height: 1rem /* 16px */;
 	padding-left: 0.25rem /* 7.008px */;
 	padding-right: 0.25rem /* 7.008px */;
-}
-
-body {
-	background-color: transparent;
 }

@@ -15,24 +15,22 @@
 
 <div class="flex flex-col">
 	<!-- Themes -->
-	<div class="flex flex-col items-center bg-bgt pt-[1px] text-primary">
+	<div class="flex flex-col items-center bg-bgt pb-1 pt-[1px] text-primary">
 		<h3 class="w-full shrink-0 text-center font-normal">THEME</h3>
-		<ul class="flex w-full list-none flex-row items-center justify-between p-1">
+		<ul
+			class="flex list-none flex-row items-center justify-between overflow-hidden rounded-primary border border-primary"
+		>
 			{#each config.theme.allThemes as theme}
-				<li>
+				<li data-theme={theme}>
 					<button
 						onclick={() => {
 							handleThemeClick(theme);
 						}}
 						class={`${
-							theme === 'pink'
-								? 'border-pinkPrimary text-pinkPrimary hover:bg-pinkPrimary hover:text-neutral'
-								: theme === 'orange'
-									? 'border-orangePrimary text-orangePrimary hover:bg-orangePrimary hover:text-neutral'
-									: theme === 'green'
-										? 'border-greenPrimary text-greenPrimary hover:bg-greenPrimary hover:text-neutral'
-										: 'border-primary text-primary'
-						} rounded-primary border px-2`}
+							config.theme.currentTheme === theme
+								? 'bg-primary text-neutral hover:bg-transparent hover:text-primary'
+								: 'bg-transparent text-primary hover:bg-primary hover:text-neutral'
+						} px-2`}
 					>
 						{theme.toUpperCase()}
 					</button>

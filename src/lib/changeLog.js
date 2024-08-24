@@ -1,5 +1,9 @@
 const changeLog = [
 	{
+		version: '0.1.3',
+		changes: '- Small adjustments to the Settings UI.'
+	},
+	{
 		version: '0.1.2',
 		changes: '+ Added a different way to display player dps.'
 	},

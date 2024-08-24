@@ -16,7 +16,7 @@
 <div class="flex flex-col">
 	<!-- Themes -->
 	<div class="flex flex-col items-center bg-bgt pt-[1px] text-primary">
-		<h3 class="w-full shrink-0 ps-1 font-normal">THEME</h3>
+		<h3 class="w-full shrink-0 text-center font-normal">THEME</h3>
 		<ul class="flex w-full list-none flex-row items-center justify-between p-1">
 			{#each config.theme.allThemes as theme}
 				<li>
@@ -43,7 +43,7 @@
 	<span class="h-[1px]"></span>
 	<!-- Player Stat Settings -->
 	<div class="flex flex-col bg-bgt pb-1 pt-[1px] text-primary">
-		<h3 class="w-full shrink-0 ps-1 font-normal">PLAYERS</h3>
+		<h3 class="w-full shrink-0 text-center font-normal">PLAYERS</h3>
 		<!-- DPS -->
 		<div class="flex w-full flex-row justify-between px-1">
 			<p class="text-sm">DPS FORMAT:</p>
@@ -82,7 +82,7 @@
 	<span class="h-[1px]"></span>
 	<!-- ChangeLog -->
 	<div class="flex flex-col items-center bg-bgt pt-[1px] text-primary">
-		<h3 class="w-full shrink-0 ps-1 font-normal">CHANGELOG</h3>
+		<h3 class="w-full shrink-0 text-center font-normal">CHANGELOG</h3>
 		<ul class="flex w-full flex-col gap-1 px-1 pb-1">
 			{#each changeLog as log}
 				<li class="text-start">

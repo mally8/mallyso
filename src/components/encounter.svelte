@@ -5,9 +5,9 @@
 	import Cogs from './svgs/cogs.svelte';
 	import { getEncData, getEncHistory, getTempEnc } from '../lib/encounter.svelte';
 	import Settings from './settings.svelte';
-	import { getNumberByK } from '../lib/utils';
+	import { formatNumbers } from '../lib/utils';
 
-	let { settingsOpen = $bindable(), themeState = $bindable(), themes = $bindable() } = $props();
+	let { settingsOpen = $bindable(), configState = $bindable() } = $props();
 
 	let overlay = getEncData();
 	let tempEnc = getTempEnc();
@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<span class="h-[1px]"></span>
-		<Settings bind:allThemes={themes} bind:currentTheme={themeState} />
+		<Settings bind:config={configState} />
 	{:else if tempEnc.isExist === false}
 		<div
 			class="flex flex-row items-center justify-between bg-bgt px-1 pt-[1px] font-medium text-primary"
@@ -63,8 +63,8 @@
 			{/each}
 			{#if overlay.encounter.zoneName.length != 0}
 				<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
-					<p>TOTAL: <span>{getNumberByK(overlay.encounter.damage)}</span></p>
-					<p>DPS: <span>{getNumberByK(overlay.encounter.dps)}</span></p>
+					<p>TOTAL: <span>{formatNumbers(overlay.encounter.damage)}</span></p>
+					<p>DPS: <span>{formatNumbers(overlay.encounter.dps)}</span></p>
 				</div>
 			{/if}
 		</div>
@@ -98,8 +98,8 @@
 				<Player playerData={tempPlayer} top_Damage={tempTopDamage} />
 			{/each}
 			<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
-				<p>TOTAL: <span>{getNumberByK(overlay.encounter.damage)}</span></p>
-				<p>DPS: <span>{getNumberByK(overlay.encounter.dps)}</span></p>
+				<p>TOTAL: <span>{formatNumbers(overlay.encounter.damage)}</span></p>
+				<p>DPS: <span>{formatNumbers(overlay.encounter.dps)}</span></p>
 			</div>
 		</div>
 	{/if}

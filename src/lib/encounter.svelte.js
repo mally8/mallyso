@@ -81,7 +81,7 @@ export function parseCombatData(data) {
 		let newCombatant = {
 			name: combatant.name,
 			job: combatant.Job,
-			dps: dps.sanitized,
+			dps: dps.formatted,
 			damage: combatant.damage,
 			damagePct: combatant['damage%'],
 			critHitPct: combatant['crithit%'],

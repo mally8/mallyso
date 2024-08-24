@@ -12,23 +12,19 @@ export function processFloat(number) {
 	return result;
 }
 
-function processNumber(number) {
-	if (!number) return;
+export function processNumber(number) {
+	const num = number;
+	let storedDpsFormat = localStorage.getItem('playerDpsFormat');
+	let result;
 
-	let num = number.toString().split('');
-	let formattedNumber;
-
-	if (num.length <= 3) return number;
-
-	if (num.length > 3) {
-		num.splice(-3, 3);
-		num.push('K');
-		formattedNumber = num.join('');
-	} else {
-		console.log('Exceptioning!');
+	if (!storedDpsFormat || storedDpsFormat == 0) {
+		return +num;
 	}
 
-	return formattedNumber;
+	if (storedDpsFormat == 1) {
+		result = formatNumbers(num);
+		return result;
+	}
 }
 
 export function getWidthPercentage(number, topNumber) {
@@ -43,7 +39,7 @@ export function getWidthPercentage(number, topNumber) {
 	return result.toFixed(2);
 }
 
-export function getNumberByK(number) {
+export function formatNumbers(number) {
 	let num = +number;
 	let result;
 
@@ -64,7 +60,7 @@ export function getNumberByK(number) {
 
 export function formatBigHit(string) {
 	let hit = string.split('-');
-	const result = `${hit[0]} ${getNumberByK(hit[1])}`;
+	const result = `${hit[0]} ${formatNumbers(hit[1])}`;
 	console.log(result);
 	return result;
 }

@@ -34,8 +34,8 @@
 			<p>CDHIT%: <span>{playerData.critDirectHitPct}</span></p>
 			<p>DEATHS: <span>{playerData.deaths}</span></p>
 		</div>
-		<div class="flex grow flex-row justify-between">
-			<p>MAX HIT:</p>
+		<div class="flex grow flex-row justify-between gap-2">
+			<p class="shrink-0">MAX HIT:</p>
 			<span>{formatBigHit(playerData.biggestHit)}</span>
 		</div>
 	</div>

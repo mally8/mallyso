@@ -130,9 +130,11 @@
 						<h4>Version:</h4>
 						<span class="badge badge-sm font-medium">{log.version}</span>
 					</div>
-					<p class="ps-1 text-xs">
-						{log.changes}
-					</p>
+					{#each log.changes as change}
+						<p class="ps-1 text-xs">
+							{change}
+						</p>
+					{/each}
 				</li>
 			{/each}
 		</ul>

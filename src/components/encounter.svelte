@@ -63,7 +63,7 @@
 			{/each}
 			{#if overlay.encounter.zoneName.length != 0}
 				<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
-					<p>TOTAL: <span>{formatNumbers(overlay.encounter.damage)}</span></p>
+					<p>DEATHS: <span>{overlay.encounter.deaths}</span></p>
 					<p>DPS: <span>{formatNumbers(overlay.encounter.dps)}</span></p>
 				</div>
 			{/if}
@@ -98,8 +98,8 @@
 				<Player playerData={tempPlayer} top_Damage={tempTopDamage} />
 			{/each}
 			<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
-				<p>TOTAL: <span>{formatNumbers(overlay.encounter.damage)}</span></p>
-				<p>DPS: <span>{formatNumbers(overlay.encounter.dps)}</span></p>
+				<p>DEATHS: <span>{formatNumbers(tempEnc.encounter.deaths)}</span></p>
+				<p>DPS: <span>{formatNumbers(tempEnc.encounter.dps)}</span></p>
 			</div>
 		</div>
 	{/if}

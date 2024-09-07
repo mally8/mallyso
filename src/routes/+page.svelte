@@ -12,7 +12,9 @@
 			dpsFormat: 0,
 			// 0 -> First Last | 1 -> F. Last | 2 -> First L. | 3 -> F. L.
 			nameFormat: 0,
-			allNameFormats: ['First Last', 'F. Last', 'First L.', 'F. L.']
+			allNameFormats: ['First Last', 'F. Last', 'First L.', 'F. L.'],
+			// 0 -> Theme color | 1 -> Role Color
+			bgColor: 0
 		}
 	});
 
@@ -43,6 +45,16 @@
 			localStorage.setItem('playerNameFormat', 0);
 		} else {
 			config.player.nameFormat = storedNameFormat;
+		}
+	});
+
+	$effect(() => {
+		let storedPlayerBgColor = localStorage.getItem('playerBgColor');
+
+		if (!storedPlayerBgColor) {
+			localStorage.setItem('playerBgColor', 0);
+		} else {
+			config.player.bgColor = storedPlayerBgColor;
 		}
 	});
 </script>

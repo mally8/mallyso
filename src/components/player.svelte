@@ -1,18 +1,19 @@
 <script>
 	import { formatBigHit, formatNumbers, getWidthPercentage } from '../lib/utils';
-	import { getJobIcon } from '../lib/jobs';
+	import { getJobIcon, getJobRole } from '../lib/jobs';
 	import JobIcon from './jobIcon.svelte';
 
-	let { playerData, top_Damage } = $props();
+	let { playerData, top_Damage, config } = $props();
 	let isOpen = $state(false);
 </script>
 
 <button
+	class={`${config.player.bgColor === 1 ? getJobRole(playerData.job).jobTextClr : 'text-primary'}`}
 	onclick={() => {
 		isOpen = !isOpen;
 	}}
 >
-	<div class="flex cursor-pointer flex-row items-center justify-between bg-bgt px-1 text-primary">
+	<div class="flex cursor-pointer flex-row items-center justify-between bg-bgt px-1">
 		<div class="flex w-[15ch] grow flex-row items-center gap-1 overflow-x-hidden text-nowrap">
 			<JobIcon jobSVG={getJobIcon(playerData.job)} />
 			<p>{playerData.name}</p>
@@ -21,7 +22,7 @@
 	</div></button
 >
 {#if isOpen}
-	<div class="flex w-full flex-col bg-bgt px-1 text-xs text-primary">
+	<div class="flex w-full flex-col bg-bgt px-1 text-xs">
 		<div class="flex grow flex-row justify-between">
 			<p>DAMAGE: <span>{formatNumbers(playerData.damage)}</span></p>
 			<p>DAMAGE%: <span>{playerData.damagePct}</span></p>
@@ -41,6 +42,6 @@
 	</div>
 {/if}
 <span
-	class="h-[1px] bg-primary"
+	class={`${config.player.bgColor === 1 ? getJobRole(playerData.job).jobBg : 'bg-primary'} h-[1px]`}
 	style={`width: ${getWidthPercentage(playerData.damage, top_Damage)}%;`}
 ></span>

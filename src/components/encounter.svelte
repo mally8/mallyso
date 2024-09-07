@@ -59,7 +59,7 @@
 
 		<div class="flex flex-col pb-1">
 			{#each overlay.combatants as player}
-				<Player playerData={player} top_Damage={topDamageCombatant} />
+				<Player playerData={player} top_Damage={topDamageCombatant} config={configState} />
 			{/each}
 			{#if overlay.encounter.zoneName.length != 0}
 				<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
@@ -95,7 +95,7 @@
 
 		<div class="flex flex-col pb-1">
 			{#each tempEnc.combatants as tempPlayer}
-				<Player playerData={tempPlayer} top_Damage={tempTopDamage} />
+				<Player playerData={tempPlayer} top_Damage={tempTopDamage} config={configState} />
 			{/each}
 			<div class="flex flex-row justify-between bg-bgt px-1 text-xs text-primary">
 				<p>DEATHS: <span>{formatNumbers(tempEnc.encounter.deaths)}</span></p>

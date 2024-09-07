@@ -11,7 +11,11 @@ export default {
 				base: 'var(--base)',
 				pinkPrimary: '#f0d5de',
 				orangePrimary: '#f5c299',
-				greenPrimary: '#e2efd2'
+				greenPrimary: '#e2efd2',
+				DPS: 'var(--DPS)',
+				TANK: 'var(--TANK)',
+				HEALER: 'var(--HEALER)',
+				MISC: 'var(--MISC)'
 			},
 			borderRadius: {
 				primary: 'var(--primaryRadius)',

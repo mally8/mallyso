@@ -144,3 +144,42 @@ export function getJobIcon(job) {
 
 	return jobIcon;
 }
+
+export function getJobRole(job) {
+	let jobRole;
+	let jobBg;
+	let jobTextClr;
+	let jobsArray = Object.values(jobs);
+
+	for (let i = 0; i < jobsArray.length; i++) {
+		if (job.toUpperCase() === jobsArray[i].shortName) {
+			return (jobRole = jobsArray[i].role);
+		}
+	}
+
+	if (!jobRole) {
+		jobRole = MISC;
+	}
+
+	switch (jobRole) {
+		case DPS:
+			jobBg = 'bg-DPS';
+			jobTextClr = 'text-DPS';
+			break;
+		case TANK:
+			jobBg = 'bg-TANK';
+			jobTextClr = 'text-TANK';
+			break;
+		case HEALER:
+			jobBg = 'bg-HEALER';
+			jobTextClr = 'text-HEALER';
+			break;
+		default:
+			jobBg = 'bg-MISC';
+			jobTextClr = 'text-MISC';
+			break;
+	}
+
+	result = { jobBg, jobTextClr };
+	return result;
+}

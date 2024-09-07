@@ -1,6 +1,5 @@
 <script>
 	import changeLog from '../lib/changeLog';
-	import { addTestEncounter } from '../lib/encounter.svelte';
 
 	let { config = $bindable(), temp } = $props();
 	let nameOpen = $state(false);
@@ -91,7 +90,7 @@
 </script>
 
 <div class="flex flex-col">
-	<div class="flex flex-col items-center justify-center bg-bgt pb-1 pt-[1px] text-primary">
+	<!-- <div class="flex flex-col items-center justify-center bg-bgt pb-1 pt-1 text-primary">
 		<button
 			class="rounded-primary border border-primary px-2 hover:bg-primary hover:text-neutral"
 			onclick={() => {
@@ -100,7 +99,7 @@
 		>
 			Show Test Combatants
 		</button>
-	</div>
+	</div> -->
 	<!-- Themes -->
 	<div class="flex flex-col items-center bg-bgt pb-1 pt-[1px] text-primary">
 		<h3 class="w-full shrink-0 text-center font-normal">THEME</h3>
@@ -115,9 +114,9 @@
 						}}
 						class={`${
 							config.theme.currentTheme === theme
-								? 'bg-primary text-neutral hover:bg-transparent hover:text-primary'
-								: 'bg-transparent text-primary hover:bg-primary hover:text-neutral'
-						} px-2`}
+								? 'bg-primary text-neutral'
+								: 'bg-transparent text-primary'
+						} px-2 hover:bg-primary hover:text-neutral`}
 					>
 						{theme.toUpperCase()}
 					</button>
@@ -163,9 +162,9 @@
 					<button
 						class={`${
 							config.player.dpsFormat == 0
-								? 'bg-primary text-neutral hover:bg-transparent hover:text-primary'
-								: 'bg-transparent text-primary hover:bg-primary hover:text-neutral'
-						} px-1`}
+								? 'bg-primary text-neutral'
+								: 'bg-transparent text-primary '
+						} px-1 hover:bg-primary hover:text-neutral`}
 						onclick={() => {
 							handleClickDpsFormat(0);
 						}}
@@ -177,9 +176,9 @@
 					<button
 						class={`${
 							config.player.dpsFormat == 1
-								? 'bg-primary text-neutral hover:bg-transparent hover:text-primary'
-								: 'bg-transparent text-primary hover:bg-primary hover:text-neutral'
-						} border-s border-s-primary px-1`}
+								? 'bg-primary text-neutral'
+								: 'bg-transparent text-primary'
+						} border-s border-s-primary px-1 hover:bg-primary hover:text-neutral`}
 						onclick={() => {
 							handleClickDpsFormat(1);
 						}}

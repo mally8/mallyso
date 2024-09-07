@@ -5,12 +5,13 @@
 
 	let { playerData, top_Damage, config } = $props();
 	let isOpen = $state(false);
-	let color = $derived(getJobRole(playerData.job));
+	let isRole = $derived(config.player.bgColor);
+	let color = getJobRole(playerData.job);
 </script>
 
 <button
 	class="text-primary"
-	style={`${config.player.bgColor === 1 ? `color: var(--${color})` : ''}`}
+	style={`${isRole == 1 ? `color: var(--${color})` : ''}`}
 	onclick={() => {
 		isOpen = !isOpen;
 	}}
@@ -19,7 +20,7 @@
 		<div class="flex w-[15ch] grow flex-row items-center gap-1 overflow-x-hidden text-nowrap">
 			<JobIcon
 				jobSVG={getJobIcon(playerData.job)}
-				style={`${config.player.bgColor === 1 ? `fill: var(--${color}) !important; color: var(--${color}) !important` : ''}`}
+				style={`${isRole == 1 ? `fill: var(--${color}) !important; color: var(--${color}) !important` : ''}`}
 			/>
 			<p>{playerData.name}</p>
 		</div>
@@ -48,5 +49,5 @@
 {/if}
 <span
 	class="h-[1px] bg-primary"
-	style={`width: ${getWidthPercentage(playerData.damage, top_Damage)}%; ${config.player.bgColor === 1 ? `background-color: var(--${color});` : ''}`}
+	style={`width: ${getWidthPercentage(playerData.damage, top_Damage)}%; ${isRole == 1 ? `background-color: var(--${color});` : ''}`}
 ></span>

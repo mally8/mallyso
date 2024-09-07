@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<span class="h-[1px]"></span>
-		<Settings bind:config={configState} />
+		<Settings bind:config={configState} temp={tempEnc} />
 	{:else if tempEnc.isExist === false}
 		<div
 			class="flex flex-row items-center justify-between bg-bgt px-1 pt-[1px] font-medium text-primary"

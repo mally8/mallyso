@@ -64,6 +64,72 @@ function updateLastEncounter(encounter) {
 	lastEncounter = getEncObject(encounter);
 }
 
+export function addTestEncounter() {
+	console.log('--Added Test Encounter--', temporaryEnc);
+	return {
+		id: 10,
+		encounter: {
+			formattedDuration: '05:00',
+			duration: '3600',
+			dps: '1236874',
+			deaths: '10',
+			zoneName: 'Testing'
+		},
+		combatants: [
+			{
+				name: 'DPS',
+				job: 'Vpr',
+				dps: '30069',
+				damage: '6000000',
+				damagePct: '60%',
+				critHitPct: '30%',
+				directHitPct: '10%',
+				critDirectHitPct: '0%',
+				biggestHit: 'smthing-100k',
+				deaths: '0'
+			},
+			{
+				name: 'TANK',
+				job: 'War',
+				dps: '20000',
+				damage: '2000000',
+				damagePct: '20%',
+				critHitPct: '30%',
+				directHitPct: '10%',
+				critDirectHitPct: '0%',
+				biggestHit: 'smthing-25k',
+				deaths: '1'
+			},
+			{
+				name: 'HEALER',
+				job: 'Whm',
+				dps: '15000',
+				damage: '2000000',
+				damagePct: '20%',
+				critHitPct: '30%',
+				directHitPct: '10%',
+				critDirectHitPct: '0%',
+				biggestHit: 'smthing-20k',
+				deaths: '3'
+			},
+			{
+				name: 'MISC',
+				job: 'LMB',
+				dps: '30069',
+				damage: '6000000',
+				damagePct: '60%',
+				critHitPct: '30%',
+				directHitPct: '10%',
+				critDirectHitPct: '0%',
+				biggestHit: 'smthing-6000000',
+				deaths: '0'
+			}
+		],
+		isExist: true,
+		index: 0
+	};
+}
+
 export function parseCombatData(data) {
 	if (data.Encounter.DURATION === '0') return;
 	if (data.Encounter.damage === '0') return;

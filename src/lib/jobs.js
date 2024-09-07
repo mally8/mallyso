@@ -1,7 +1,7 @@
-export const TANK = 'Tank';
-export const HEALER = 'Healer';
+export const TANK = 'TANK';
+export const HEALER = 'HEALER';
 export const DPS = 'DPS';
-export const MISC = 'Misc';
+export const MISC = 'MISC';
 
 // Grabbed from https://github.com/xivapi/classjob-icons/blob/master/svg/class_job_019.svg
 
@@ -124,7 +124,7 @@ const jobs = {
 	LMB: {
 		shortName: 'LMB',
 		role: MISC,
-		icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path fill="none" d="M0 0h24v24H0z"></path> <path fill-rule="nonzero" d="M7.05 13.406l3.534 3.536-1.413 1.414 1.415 1.415-1.414 1.414-2.475-2.475-2.829 2.829-1.414-1.414 2.829-2.83-2.475-2.474 1.414-1.414 1.414 1.413 1.413-1.414zM3 3l3.546.003 11.817 11.818 1.415-1.414 1.414 1.414-2.474 2.475 2.828 2.829-1.414 1.414-2.829-2.829-2.475 2.475-1.414-1.414 1.414-1.415L3.003 6.531 3 3zm14.457 0L21 3.003l.002 3.523-4.053 4.052-3.536-3.535L17.457 3z"></path> </g> </g></svg>'
+		icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/></svg>'
 	}
 };
 
@@ -147,13 +147,12 @@ export function getJobIcon(job) {
 
 export function getJobRole(job) {
 	let jobRole;
-	let jobBg;
-	let jobTextClr;
+	let result;
 	let jobsArray = Object.values(jobs);
 
 	for (let i = 0; i < jobsArray.length; i++) {
 		if (job.toUpperCase() === jobsArray[i].shortName) {
-			return (jobRole = jobsArray[i].role);
+			jobRole = jobsArray[i].role;
 		}
 	}
 
@@ -161,25 +160,18 @@ export function getJobRole(job) {
 		jobRole = MISC;
 	}
 
-	switch (jobRole) {
-		case DPS:
-			jobBg = 'bg-DPS';
-			jobTextClr = 'text-DPS';
-			break;
-		case TANK:
-			jobBg = 'bg-TANK';
-			jobTextClr = 'text-TANK';
-			break;
-		case HEALER:
-			jobBg = 'bg-HEALER';
-			jobTextClr = 'text-HEALER';
-			break;
-		default:
-			jobBg = 'bg-MISC';
-			jobTextClr = 'text-MISC';
-			break;
+	if (jobRole === DPS) {
+		result = 'DPS';
+	}
+	if (jobRole === TANK) {
+		result = 'TANK';
+	}
+	if (jobRole === HEALER) {
+		result = 'HEALER';
+	}
+	if (jobRole === MISC) {
+		result = 'MISC';
 	}
 
-	result = { jobBg, jobTextClr };
 	return result;
 }

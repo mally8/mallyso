@@ -1,7 +1,7 @@
 <script>
-	let { jobSVG } = $props();
+	let { jobSVG, style } = $props();
 </script>
 
-<div class="fill-primary text-primary grid aspect-square h-5 w-5 place-items-center">
+<div class="grid aspect-square h-5 w-5 place-items-center fill-primary text-primary" {style}>
 	{@html jobSVG}
 </div>

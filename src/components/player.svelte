@@ -5,24 +5,29 @@
 
 	let { playerData, top_Damage, config } = $props();
 	let isOpen = $state(false);
+	let color = $derived(getJobRole(playerData.job));
 </script>
 
 <button
-	class={`${config.player.bgColor === 1 ? getJobRole(playerData.job).jobTextClr : 'text-primary'}`}
+	class="text-primary"
+	style={`${config.player.bgColor === 1 ? `color: var(--${color})` : ''}`}
 	onclick={() => {
 		isOpen = !isOpen;
 	}}
 >
 	<div class="flex cursor-pointer flex-row items-center justify-between bg-bgt px-1">
 		<div class="flex w-[15ch] grow flex-row items-center gap-1 overflow-x-hidden text-nowrap">
-			<JobIcon jobSVG={getJobIcon(playerData.job)} />
+			<JobIcon
+				jobSVG={getJobIcon(playerData.job)}
+				style={`${config.player.bgColor === 1 ? `fill: var(--${color}) !important; color: var(--${color}) !important` : ''}`}
+			/>
 			<p>{playerData.name}</p>
 		</div>
 		<span class="shrink-0 ps-1 text-xs">{playerData.dps}</span>
-	</div></button
->
+	</div>
+</button>
 {#if isOpen}
-	<div class="flex w-full flex-col bg-bgt px-1 text-xs">
+	<div class="flex w-full flex-col bg-bgt px-1 text-xs text-primary">
 		<div class="flex grow flex-row justify-between">
 			<p>DAMAGE: <span>{formatNumbers(playerData.damage)}</span></p>
 			<p>DAMAGE%: <span>{playerData.damagePct}</span></p>
@@ -42,6 +47,6 @@
 	</div>
 {/if}
 <span
-	class={`${config.player.bgColor === 1 ? getJobRole(playerData.job).jobBg : 'bg-primary'} h-[1px]`}
-	style={`width: ${getWidthPercentage(playerData.damage, top_Damage)}%;`}
+	class="h-[1px] bg-primary"
+	style={`width: ${getWidthPercentage(playerData.damage, top_Damage)}%; ${config.player.bgColor === 1 ? `background-color: var(--${color});` : ''}`}
 ></span>

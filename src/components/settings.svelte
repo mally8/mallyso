@@ -1,8 +1,72 @@
 <script>
 	import changeLog from '../lib/changeLog';
+	import { addTestEncounter } from '../lib/encounter.svelte';
 
-	let { config = $bindable() } = $props();
+	let { config = $bindable(), temp } = $props();
 	let nameOpen = $state(false);
+
+	function handleClickTest() {
+		temp.encounter = {
+			formattedDuration: '05:00',
+			duration: '3600',
+			dps: '1236874',
+			deaths: '10',
+			zoneName: 'Testing'
+		};
+		temp.isExist = true;
+		temp.id = 10;
+		temp.index = 1;
+		temp.combatants = [
+			{
+				name: 'DPS',
+				job: 'Vpr',
+				dps: '30069',
+				damage: '6000000',
+				damagePct: '60%',
+				critHitPct: '30%',
+				directHitPct: '10%',
+				critDirectHitPct: '0%',
+				biggestHit: 'smthing-100000',
+				deaths: '0'
+			},
+			{
+				name: 'TANK',
+				job: 'War',
+				dps: '20000',
+				damage: '2000000',
+				damagePct: '20%',
+				critHitPct: '30%',
+				directHitPct: '10%',
+				critDirectHitPct: '0%',
+				biggestHit: 'smthing-250000',
+				deaths: '1'
+			},
+			{
+				name: 'HEALER',
+				job: 'Whm',
+				dps: '15000',
+				damage: '2000000',
+				damagePct: '20%',
+				critHitPct: '30%',
+				directHitPct: '10%',
+				critDirectHitPct: '0%',
+				biggestHit: 'smthing-200000',
+				deaths: '3'
+			},
+			{
+				name: 'MISC',
+				job: 'LMB',
+				dps: '30069',
+				damage: '6000000',
+				damagePct: '60%',
+				critHitPct: '30%',
+				directHitPct: '10%',
+				critDirectHitPct: '0%',
+				biggestHit: 'smthing-6000000',
+				deaths: '0'
+			}
+		];
+	}
 
 	function handleClickTheme(theme) {
 		config.theme.currentTheme = theme;
@@ -27,6 +91,16 @@
 </script>
 
 <div class="flex flex-col">
+	<div class="flex flex-col items-center justify-center bg-bgt pb-1 pt-[1px] text-primary">
+		<button
+			class="rounded-primary border border-primary px-2 hover:bg-primary hover:text-neutral"
+			onclick={() => {
+				handleClickTest();
+			}}
+		>
+			Show Test Combatants
+		</button>
+	</div>
 	<!-- Themes -->
 	<div class="flex flex-col items-center bg-bgt pb-1 pt-[1px] text-primary">
 		<h3 class="w-full shrink-0 text-center font-normal">THEME</h3>
@@ -61,7 +135,7 @@
 			<ul class="flex list-none flex-row items-center rounded-primary border border-primary">
 				<li>
 					<button
-						class={`${config.player.bgColor === 0 ? 'bg-primary text-neutral' : 'bg-bgt text-primary'} px-2 hover:bg-primary hover:text-neutral`}
+						class={`${config.player.bgColor == 0 ? 'bg-primary text-neutral' : 'bg-transparent text-primary'} px-2 hover:bg-primary hover:text-neutral`}
 						onclick={() => {
 							handleClickRoleBg(0);
 						}}
@@ -71,7 +145,7 @@
 				</li>
 				<li>
 					<button
-						class={`${config.player.bgColor === 1 ? 'bg-primary text-neutral' : 'bg-bgt text-primary'} px-2 hover:bg-primary hover:text-neutral`}
+						class={`${config.player.bgColor == 1 ? 'bg-primary text-neutral' : 'bg-transparent text-primary'} px-2 hover:bg-primary hover:text-neutral`}
 						onclick={() => {
 							handleClickRoleBg(1);
 						}}

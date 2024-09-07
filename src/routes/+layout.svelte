@@ -30,6 +30,9 @@
 	:global(*) {
 		scrollbar-width: none;
 	}
+	:global(*)::-webkit-scrollbar {
+		display: none;
+	}
 	:global(body) {
 		background-color: transparent;
 	}

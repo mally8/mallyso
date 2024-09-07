@@ -56,12 +56,15 @@
 	<div class="flex flex-col bg-bgt pb-1 pt-[1px] text-primary">
 		<h3 class="w-full shrink-0 text-center font-normal">PLAYERS</h3>
 		<!-- Color -->
-		<div class="flex w-full flex-row justify-between px-1 pb-1 pt-1">
+		<div class="flex w-full flex-row justify-between px-1 pt-1">
 			<p class="text-sm">Color:</p>
 			<ul class="flex list-none flex-row items-center rounded-primary border border-primary">
 				<li>
 					<button
 						class={`${config.player.bgColor === 0 ? 'bg-primary text-neutral' : 'bg-bgt text-primary'} px-2 hover:bg-primary hover:text-neutral`}
+						onclick={() => {
+							handleClickRoleBg(0);
+						}}
 					>
 						Theme
 					</button>
@@ -69,6 +72,9 @@
 				<li>
 					<button
 						class={`${config.player.bgColor === 1 ? 'bg-primary text-neutral' : 'bg-bgt text-primary'} px-2 hover:bg-primary hover:text-neutral`}
+						onclick={() => {
+							handleClickRoleBg(1);
+						}}
 					>
 						Role
 					</button>

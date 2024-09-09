@@ -6,7 +6,7 @@
 	let { playerData, top_Damage, config } = $props();
 	let isOpen = $state(false);
 	let isRole = $derived(config.player.bgColor);
-	let color = getJobRole(playerData.job);
+	let color = $derived(getJobRole(playerData.job));
 </script>
 
 <button

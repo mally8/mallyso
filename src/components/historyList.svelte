@@ -1,7 +1,11 @@
 <script>
 	import Update from './svgs/update.svelte';
 
-	let { encounterHistory = $bindable(), temporaryEnc = $bindable() } = $props();
+	let {
+		encounterHistory = $bindable(),
+		temporaryEnc = $bindable(),
+		isOpen = $bindable()
+	} = $props();
 
 	function handleClick(id, index) {
 		if (encounterHistory.length === 0) return;
@@ -23,16 +27,17 @@
 		temporaryEnc.id = data.id;
 
 		temporaryEnc.encounter.index = index + 1;
+		isOpen = false;
 	}
 </script>
 
-<ul class="text-primary flex flex-col items-center bg-bgt">
+<ul class="flex flex-col items-center bg-bgt text-primary">
 	<div class="flex w-full flex-row items-center justify-between px-1">
 		<h3 class="text-ellipsis text-nowrap">Encounter History List</h3>
 		<Update />
 	</div>
 	{#each encounterHistory as enc, index}
-		<li class="hover:bg-primary hover:text-neutral group w-full px-1 pt-1">
+		<li class="group w-full px-1 pt-1 hover:bg-primary hover:text-neutral">
 			<button
 				class="flex w-full flex-row justify-between"
 				onclick={() => {
@@ -41,7 +46,7 @@
 			>
 				<div class="flex grow flex-row gap-1 overflow-x-hidden">
 					<span
-						class="badge badge-sm group-hover:text-primary group-hover:bg-base px-1 font-sourceCode font-bold"
+						class="badge badge-sm px-1 font-sourceCode font-bold group-hover:bg-base group-hover:text-primary"
 					>
 						{index + 1}
 					</span>

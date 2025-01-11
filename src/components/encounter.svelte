@@ -54,7 +54,7 @@
 
 		<span class="h-[1px]"></span>
 		{#if historyOpen}
-			<HistoryList encounterHistory={encHistory} temporaryEnc={tempEnc} />
+			<HistoryList encounterHistory={encHistory} temporaryEnc={tempEnc} bind:isOpen={historyOpen} />
 		{/if}
 
 		<div class="flex flex-col pb-1">
@@ -90,7 +90,7 @@
 
 		<span class="h-[1px]"></span>
 		{#if historyOpen}
-			<HistoryList encounterHistory={encHistory} temporaryEnc={tempEnc} />
+			<HistoryList encounterHistory={encHistory} temporaryEnc={tempEnc} bind:isOpen={historyOpen} />
 		{/if}
 
 		<div class="flex flex-col pb-1">

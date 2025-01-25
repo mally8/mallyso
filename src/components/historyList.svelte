@@ -34,7 +34,7 @@
 <ul class="flex flex-col items-center bg-bgt text-primary">
 	<div class="flex w-full flex-row items-center justify-between px-1">
 		<h3 class="text-ellipsis text-nowrap">Encounter History List</h3>
-		<Update />
+		<Update bind:openBool={isOpen} />
 	</div>
 	{#each encounterHistory as enc, index}
 		<li class="group w-full px-1 pt-1 hover:bg-primary hover:text-neutral">
